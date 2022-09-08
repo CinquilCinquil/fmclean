@@ -19,13 +19,22 @@ end
 theorem doubleneg_elim :
   ¬¬P → P  :=
 begin
-  sorry, --sub_demonstração!!!!!!!!!!
+  intro h,
+  by_cases h : P,
+  assumption,
+  contradiction,
 end
 
 theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
-  sorry, --só um dos lados :(
+  split,
+  intro h,
+  by_cases h: P,
+  assumption,
+  contradiction,
+  intros h h2,
+  contradiction,
 end
 
 ------------------------------------------------
@@ -87,19 +96,17 @@ theorem impl_as_contrapositive :
 begin
   intros h h2 h3,
   have hq : Q := h h3,
-  apply h2,
-  assumption,
-  --contradiction tbm
-
-
+  contradiction,
 end
 
 theorem impl_as_contrapositive_converse :
   (¬Q → ¬P) → (P → Q)  :=
 begin
-  intro h,
-  intro h2,
-  --sub_demonstração ???????????????
+  intros h h2,
+  by_cases h3 : Q,
+  assumption,
+  have homi : ¬P := h h3,
+  contradiction,
 end
 
 theorem contrapositive_law :
@@ -109,9 +116,11 @@ begin
   intros h h2 h3,
   have hq : Q := h h3,
   contradiction,
-  intro h,
-  intro h2,
-  --sub_demonstração ???????????????
+  intros h h2,
+  by_cases h3 : Q,
+  assumption,
+  have homi : ¬P := h h3,
+  contradiction,
 end
 
 
@@ -142,7 +151,11 @@ theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
   intros h h2,
-  --sub_demonstração ???????????????
+  have hnew : (P → Q),
+  intro h3,
+  contradiction,
+  have homi : P := h hnew,
+  contradiction,
 end
 
 
@@ -207,7 +220,18 @@ theorem demorgan_conj :
   ¬(P∧Q) → (¬Q ∨ ¬P)  :=
 begin
   intro h,
-  --sub_demonstração ???????????????
+  by_cases h2 : P,
+  by_cases h3 : Q, --duas bolas de fogo são melhores que uma!
+  have h4 : P ∧ Q,
+  split,
+  assumption,
+  assumption,
+  contradiction,
+  left,
+  assumption,
+  right,
+  assumption,
+
 end
 
 theorem demorgan_conj_converse :
@@ -224,8 +248,25 @@ theorem demorgan_conj_law :
   ¬(P∧Q) ↔ (¬Q ∨ ¬P)  :=
 begin
   split,
-  intro h,
-  --sub_demonstração ???????????????
+  --eu n sei importar teorema help
+    intro h,
+    by_cases h2 : P,
+    by_cases h3 : Q, --duas bolas de fogo são melhores que uma!
+    have h4 : P ∧ Q,
+    split,
+    assumption,
+    assumption,
+    contradiction,
+    left,
+    assumption,
+    right,
+    assumption,
+  --FIM DE: eu n sei importar teorema help
+  intros h h2,
+  cases h2,
+  cases h,
+  contradiction,
+  contradiction,
 end
 
 theorem demorgan_disj_law :
@@ -450,9 +491,11 @@ variables P Q : U -> Prop
 theorem demorgan_exists :
   ¬(∃x, P x) → (∀x, ¬P x)  :=
 begin
-  intro h,
-  intro a,
-  -- ??????????????????? tafuck do i do
+  intros h a h1,
+  have h2 : (∃x, P x),
+  existsi a,
+  assumption,
+  contradiction,
 end
 
 theorem demorgan_exists_converse :
@@ -468,8 +511,8 @@ end
 theorem demorgan_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
-  intro h,
-  -- ??????????????????? tafuck do i do
+  --very hard  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  --se eu podesse assumir a : U daria...como q eu faço isso?
 end
 
 theorem demorgan_forall_converse :
@@ -487,16 +530,22 @@ theorem demorgan_forall_law :
 begin
   split,
   intro h,
-  -- ??????????????????? tafuck do i do
+  --akuma no ko (chichi ka?)
 end
 
 theorem demorgan_exists_law :
   ¬(∃x, P x) ↔ (∀x, ¬P x)  :=
 begin
   split,
-  intro h,
-  intro a,
-  -- ??????????????????? tafuck do i do
+  intros h a h1,
+  have h2 : (∃x, P x),
+    existsi a,
+    assumption,
+  contradiction,
+  intros h h1,
+  cases h1 with a ha,
+  have h2000 : ¬P a := h a,
+  contradiction,
 end
 
 
@@ -525,16 +574,20 @@ end
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
-  intro h,
-  intro a,
-  -- ??????????????????? tafuck do i do
+  intros h a,
+  by_cases h2 : P a,
+  assumption,
+  have h3 : (∃x, ¬P x),
+    existsi a,
+    assumption,
+  contradiction,
 end
 
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
   intro h,
-  -- ??????????????????? tafuck do i do
+  --mata akuma no ko
 end
 
 theorem forall_as_neg_exists_law :
@@ -547,7 +600,7 @@ begin
   contradiction,
   intro h,
   intro a,
-  -- ??????????????????? tafuck do i do
+  --mata akuma no chichi
 end
 
 theorem exists_as_neg_forall_law :
@@ -559,7 +612,7 @@ begin
   have hq: ¬P a := h2 a,
   contradiction,
   intro h,
-  -- ??????????????????? tafuck do i do
+  -- akuma akuma akuma
 end
 
 
@@ -578,7 +631,7 @@ begin
   assumption,
   existsi a,
   assumption,
-
+  
 end
 
 theorem exists_disj_as_disj_exists :
