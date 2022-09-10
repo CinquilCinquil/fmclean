@@ -511,8 +511,21 @@ end
 theorem demorgan_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
-  --very hard  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  --se eu podesse assumir a : U daria...como q eu faço isso?
+  intro h,
+  -- eu n sei importar teorema help
+  have h2 : ¬(∃x, ¬P x) → (∀x, P x),
+    intros h_ a,
+    by_cases hcases : P a,
+    assumption,
+    have h_2 : (∃x, ¬P x),
+      existsi a,
+      assumption,
+    contradiction,
+  --FIM DE: eu n sei importar teorema help
+  by_contradiction h3,
+  have h4 : (∀x, P x) := h2 h3,
+  contradiction,
+
 end
 
 theorem demorgan_forall_converse :
@@ -529,8 +542,29 @@ theorem demorgan_forall_law :
   ¬(∀x, P x) ↔ (∃x, ¬P x)  :=
 begin
   split,
+  -- eu n sei importar teorema help
   intro h,
-  --akuma no ko (chichi ka?)
+  -- eu n sei importar teorema help
+  have h2 : ¬(∃x, ¬P x) → (∀x, P x),
+    intros h_ a,
+    by_cases hcases : P a,
+    assumption,
+    have h_2 : (∃x, ¬P x),
+      existsi a,
+      assumption,
+    contradiction,
+  --FIM DE: eu n sei importar teorema help
+  by_contradiction h3,
+  have h4 : (∀x, P x) := h2 h3,
+  contradiction,
+  --FIM DE: eu n sei importar teorema help
+  -- eu n sei importar teorema help
+  intro h,
+  cases h with a ha,
+  intro a2,
+  have hq : P a := a2 a,
+  contradiction,
+  --FIM DE: eu n sei importar teorema help
 end
 
 theorem demorgan_exists_law :
@@ -587,7 +621,15 @@ theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
   intro h,
-  --mata akuma no ko
+  by_contradiction h2,
+  have h3: ¬(∃x, P x) → (∀x, ¬P x),
+    intros h4 a h5,
+    have h6 : (∃x, P x),
+      existsi a,
+      assumption,
+    contradiction,
+  have h4 : (∀x, ¬P x) := h3 h2,
+  contradiction,
 end
 
 theorem forall_as_neg_exists_law :
@@ -600,7 +642,13 @@ begin
   contradiction,
   intro h,
   intro a,
-  --mata akuma no chichi
+  by_contradiction h2,
+  have h3 : (∃x, ¬P x),
+    existsi a,
+    assumption,
+  contradiction,
+    
+
 end
 
 theorem exists_as_neg_forall_law :
@@ -611,8 +659,19 @@ begin
   cases h with a ha,
   have hq: ¬P a := h2 a,
   contradiction,
+  -- eu n sei importar teorema help
   intro h,
-  -- akuma akuma akuma
+  by_contradiction h2,
+  have h3: ¬(∃x, P x) → (∀x, ¬P x),
+    intros h4 a h5,
+    have h6 : (∃x, P x),
+      existsi a,
+      assumption,
+    contradiction,
+  have h4 : (∀x, ¬P x) := h3 h2,
+  contradiction,
+  --FIM DE: eu n sei importar teorema help
+
 end
 
 
