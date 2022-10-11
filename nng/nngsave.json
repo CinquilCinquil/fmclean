@@ -243,11 +243,13 @@
     },
     {
       "lean": "lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intros p_bi_q q_bi_r,\r\ncases p_bi_q with p_to_q q_to_p,\r\ncases q_bi_r with q_to_r r_to_q,\r\nsplit,\r\nintro p,\r\napply q_to_r,\r\napply p_to_q,\r\nexact p,\r\nintro r,\r\napply q_to_p,\r\napply r_to_q,\r\nexact r,\r\n"
     },
     {
       "lean": "lemma iff_trans (P Q R : Prop) : (P ↔ Q) → (Q ↔ R) → (P ↔ R) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intros p_bi_q q_bi_r,\r\ncases p_bi_q with p_to_q q_to_p,\r\ncases q_bi_r with q_to_r r_to_q,\r\nsplit,\r\nintro p,\r\napply q_to_r,\r\napply p_to_q,\r\nexact p,\r\nintro r,\r\napply q_to_p,\r\napply r_to_q,\r\nexact r,\r\n"
     },
     {
       "lean": "example (P Q : Prop) : Q → (P ∨ Q) :=\n",
