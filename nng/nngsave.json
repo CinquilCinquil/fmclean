@@ -253,6 +253,7 @@
     },
     {
       "lean": "example (P Q : Prop) : Q → (P ∨ Q) :=\n",
+      "isSolved": true,
       "editorText": "intro q,\r\nright,\r\nexact q,"
     },
     {
@@ -267,11 +268,13 @@
     },
     {
       "lean": "lemma contra (P Q : Prop) : (P ∧ ¬ P) → Q :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro p_notp,\r\ncases p_notp with p p_to_die,\r\ncontradiction,"
     },
     {
       "lean": "lemma contrapositive2 (P Q : Prop) : (¬ Q → ¬ P) → (P → Q) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intros notq_to_notp p,\r\nby_cases magic : Q,\r\nexact magic,\r\nhave notp : ¬P := notq_to_notp magic,\r\ncontradiction,"
     },
     {
       "lean": "theorem succ_inj' {a b : mynat} (hs : succ(a) = succ(b)) :  a = b := \n",
