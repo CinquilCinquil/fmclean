@@ -292,11 +292,12 @@
     },
     {
       "lean": "theorem succ_eq_succ_iff (a b : mynat) : succ a = succ b ↔ a = b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nintro h,\r\nexact succ_inj h,\r\nintro h,\r\nexact succ_eq_succ_of_eq h,"
     },
     {
       "lean": "theorem add_right_cancel (a t b : mynat) : a + t = b + t → a = b :=\n",
-      "editorText": "sorry"
+      "editorText": "intro h,\r\ninduction t with d hd,\r\nrepeat{rwa add_zero at h},\r\nrepeat{rw add_succ at h},\r\nhave h2 : a + d = b + d := succ_inj h,\r\napply hd,\r\nexact h2,"
     },
     {
       "lean": "theorem add_left_cancel (t a b : mynat) : t + a = t + b → a = b :=\n",
