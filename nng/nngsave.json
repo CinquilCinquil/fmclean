@@ -354,7 +354,8 @@
     },
     {
       "lean": "theorem mul_eq_zero_iff (a b : mynat): a * b = 0 ↔ a = 0 ∨ b = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "split,\r\nintro h,\r\nexact (eq_zero_or_eq_zero_of_mul_eq_zero a b) h,\r\nintro h,\r\ncases h with ha hb,\r\nrw ha,\r\nrwa zero_mul,\r\nrw hb,\r\nrwa mul_zero,\r\n\r\n"
     },
     {
       "lean": "theorem mul_left_cancel (a b c : mynat) (ha : a ≠ 0) : a * b = a * c → b = c :=\n",
