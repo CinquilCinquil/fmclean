@@ -130,12 +130,12 @@
     {
       "lean": "lemma pow_pow (a m n : mynat) : (a ^ m) ^ n = a ^ (m * n) :=\n",
       "isSolved": true,
-      "editorText": "induction n with d hd,\r\nrw pow_zero,\r\nrw mul_zero,\r\nrwa pow_zero,\r\nrw pow_succ,\r\nrw hd,\r\nrw succ_eq_add_one,\r\nrw mul_add,\r\nrw pow_add,\r\nsimp,\r\n"
+      "editorText": "induction n with d hd,\r\nrw pow_zero,\r\nrw mul_zero,\r\nrwa pow_zero,\r\nrw pow_succ,\r\nrw hd,\r\nrw succ_eq_add_one,\r\nrw mul_add,\r\nrw pow_add,\r\nrwa mul_one,\r\n"
     },
     {
       "lean": "lemma add_squared (a b : mynat) :\n  (a + b) ^ (2 : mynat) = a ^ (2 : mynat) + b ^ (2 : mynat) + 2 * a * b :=\n",
       "isSolved": true,
-      "editorText": "rw two_eq_succ_one,\r\nrepeat{rw pow_succ},\r\nrepeat{rw pow_one},\r\nrw succ_mul,\r\nrw one_mul,\r\nrw mul_add (a + b) a b,\r\nrepeat{rw add_mul},\r\nsimp,\r\n"
+      "editorText": "rw two_eq_succ_one,\r\nrepeat{rw pow_succ},\r\nrepeat{rw pow_one},\r\nrw succ_mul,\r\nrw one_mul,\r\nrw mul_add (a + b) a b,\r\nrepeat{rw add_mul},\r\nrw add_right_comm,\r\nrw add_assoc,\r\nrw add_right_comm (a*a) (b*b) (a * b + a * b),\r\nrw add_assoc (a*a) (a * b + a * b) (b*b),\r\nrw add_right_comm,\r\nrwa mul_comm b a,"
     },
     {
       "lean": "example (P Q : Type) (p : P) (h : P → Q) : Q :=\n",
