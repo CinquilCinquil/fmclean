@@ -80,7 +80,7 @@
     {
       "lean": "lemma succ_mul (a b : mynat) : succ a * b = a * b + b :=\n",
       "isSolved": true,
-      "editorText": "induction b with d hd,\r\nrepeat {rw mul_zero},\r\nrwa add_zero,\r\n--repeat n funciona qui por algum motivo\r\nrw mul_succ,\r\nrw mul_succ,\r\nrw hd,\r\nrepeat{rw add_succ},\r\nrepeat{rw succ_eq_add_one},\r\nsimp,\r\n\r\n"
+      "editorText": "induction b with d hd,\r\nrepeat {rw mul_zero},\r\nrwa add_zero,\r\n--repeat n funciona qui por algum motivo\r\nrw mul_succ,\r\nrw mul_succ,\r\nrw hd,\r\nrepeat{rw add_succ},\r\nrepeat{rw succ_eq_add_one},\r\nrw add_comm (a * d + d + a) 1,\r\nrw add_comm (a * d + a + d) 1,\r\nrwa add_right_comm (a*d) a d,\r\n\r\n"
     },
     {
       "lean": "lemma add_mul (a b t : mynat) : (a + b) * t = a * t + b * t :=\n",
