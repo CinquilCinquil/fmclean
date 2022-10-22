@@ -394,15 +394,17 @@
     },
     {
       "lean": "lemma le_zero (a : mynat) (h : a ≤ 0) : a = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases h with c hc,\r\nsymmetry at hc,\r\nhave h' := add_right_eq_zero hc,\r\nexact h',"
     },
     {
       "lean": "lemma succ_le_succ (a b : mynat) (h : a ≤ b) : succ a ≤ succ b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "cases h with c hc,\r\nhave h' := succ_eq_succ_of_eq hc,\r\nrw h',\r\nuse c,\r\nrwa succ_add,"
     },
     {
       "lean": "theorem le_total (a b : mynat) : a ≤ b ∨ b ≤ a :=\n",
-      "editorText": "sorry"
+      "editorText": "\r\n\r\n\r\n\r\n--induction a with c hc generalizing b,\r\n--left,\r\n--use b,\r\n--rwa zero_add,\r\n--induction b with d hd,\r\n--right,\r\n--exact (zero_le (succ c)),\r\n--cases hd,\r\n--left,\r\n--cases hd with g hg,\r\n--use g + 1,\r\n--rw hg,\r\n--repeat{rw succ_add},\r\n--rw one_eq_succ_zero,\r\n--rw add_succ,\r\n--rw add_zero,\r\n--rwa add_succ,\r\n\r\n\r\n--induction b with d hd,\r\n--cases hc,\r\n--have h' := (le_zero c) hc,\r\n--rw h',\r\n--right,\r\n--use 1,\r\n--refl,\r\n--right,\r\n--use c + 1,\r\n--rw zero_add,\r\n--refl,\r\n\r\n\r\n--induction a with d hd,\r\n--left,\r\n--use b,\r\n--rwa zero_add,\r\n--cases hd,\r\n--right,\r\n--cases hd with c hc,\r\n--cases b,\r\n\r\n\r\n--have h' : (∃c : mynat, c = a + b),\r\n--use a + b,\r\n--refl,\r\n--cases h' with c hc,\r\n--cases c,\r\n--symmetry at hc,\r\n--left,\r\n--have ha := add_right_eq_zero hc,\r\n--rw ha,\r\n--use b,\r\n--rwa zero_add,"
     },
     {
       "lean": "lemma le_succ_self (a : mynat) : a ≤ succ a :=\n",
