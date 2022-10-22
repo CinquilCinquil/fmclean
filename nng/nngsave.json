@@ -379,11 +379,12 @@
     },
     {
       "lean": "lemma zero_le (a : mynat) : 0 ≤ a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "use a,\r\nrwa zero_add,"
     },
     {
       "lean": "theorem le_trans (a b c : mynat) (hab : a ≤ b) (hbc : b ≤ c) : a ≤ c :=\n",
-      "editorText": "sorry"
+      "editorText": "cases hab with x hx,\r\ncases hbc with y hy,\r\nuse x + y,\r\nhave h' := add_assoc (a) (x) (y),\r\nrw hy,\r\nrw hx,\r\nrwa h',\r\n\r\n"
     },
     {
       "lean": "theorem le_antisymm (a b : mynat) (hab : a ≤ b) (hba : b ≤ a) : a = b :=\n",
